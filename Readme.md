@@ -5,7 +5,7 @@ A web application that segments, preprocesses, and classifies multi-digit handwr
 
 ## 🚀 Live Demo
 
-[Click here to try the live application](YOUR_STREAMLIT_APP_URL)
+[Click here to try the live application](https://digitrecognisermnistcnnbyraj-khq83tavusvv2kfcw4ncjd.streamlit.app/)
 
 ## 📸 App Screenshot
 
