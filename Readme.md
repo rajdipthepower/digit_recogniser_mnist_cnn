@@ -42,7 +42,7 @@ Evaluation & Failure Analysis
 
 | Confusion Matrix                               | Misclassified Digits                                   | Failure Cases                            |
 | :--------------------------------------------: | :----------------------------------------------------: | :--------------------------------------: |
-| ![Confusion Matrix](docs/confusion_matrix.png) | ![Misclassified Digits](docs/misclassified_digits.png) | ![Failure Cases](docs/failure_cases.png) |
+| ![Confusion Matrix](docs/confusion_matrix.png) | ![Misclassified Digits](docs/misclassified.png) | ![Failure Cases](docs/failure_cases.png) |
 
 Repository Structure
 
