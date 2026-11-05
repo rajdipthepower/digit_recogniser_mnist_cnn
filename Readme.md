@@ -2,15 +2,15 @@ Multi-Digit Handwritten Number Recognizer
 
 A web application that segments, preprocesses, and classifies multi-digit handwritten sequences from an interactive canvas using a PyTorch CNN.
 
-Live Demo
+🚀 Live Demo
 
-[Add Live Demo Link Here]
+Click here to try the live application
 
-App Screenshot
+📸 App Screenshot
 
-!App Screenshot
+!Application Screenshot
 
-How It Works
+⚙️ How It Works
 Canvas Ingestion: Extracts drawing canvas data, handles RGB/RGBA conversion, and normalizes foreground ink to white on a black background.
 Segmentation: Applies Otsu's thresholding and 8-connectivity connected component analysis (cv2.connectedComponentsWithStats) to detect individual digit blobs.
 Filtering & Sorting: Discards noise blobs (area < 50 px, height < 24 px) and sorts remaining digits from left to right by their horizontal bounding box coordinate.
@@ -20,7 +20,7 @@ Blobs with an aspect ratio (width / height) > 1.6 trigger a warning: "Leave a ga
 Each crop is evaluated by the CNN.
 If any digit has a softmax confidence below 95%, it is flagged as ?, and the full number output is suppressed.
 Output: If all digits pass the confidence threshold, they are joined into the final number and verbalized using num2words.
-Model and Results
+🧠 Model and Results
 
 The classification model is a Convolutional Neural Network (CNN) trained on the standard MNIST dataset, achieving approximately 99.2% test accuracy as part of an MIT edX course.
 
@@ -37,27 +37,27 @@ Conv2d(1, 32, 3)
     -> Dropout(0.5)
     -> Linear(128, 10)
 
-Evaluation & Failure Analysis
+📊 Evaluation & Failure Analysis
 Confusion Matrix	Misclassified Digits	Failure Cases
 !Confusion Matrix	!Misclassified Digits	!Failure Cases
-Repository Structure
+📁 Repository Structure
 text
-├── app.py                  # Streamlit entry point and UI layout
+├── app.py
 ├── src/
-│   ├── model.py            # PyTorch model definition and cached loading
-│   ├── segmentation.py     # Blob extraction, noise filtering, and ordering
-│   ├── preprocessing.py    # Center-of-mass alignment and MNIST formatting
-│   └── utils.py            # Confidence validation and number-to-words logic
+│   ├── model.py
+│   ├── segmentation.py
+│   ├── preprocessing.py
+│   └── utils.py
 ├── models/
-│   └── mnist_cnn_weights.pt # Trained CNN weights
+│   └── mnist_cnn_weights.pt
 ├── docs/
 │   ├── app_screenshot.png
 │   ├── confusion_matrix.png
 │   ├── misclassified.png
 │   └── failure_cases.png
-└── requirements.txt        # Pinned CPU-compatible dependencies
+└── requirements.txt
 
-Run Locally
+💻 Run Locally
 1. Clone the Repository
 bash
 git clone https://github.com/your-username/mnist-multidigit-recognizer.git
@@ -88,23 +88,23 @@ bash
 streamlit run app.py
 
 
-The application will be available locally at:
+The application will be available at:
 
 text
 http://localhost:8501
 
-Known Limitations
+⚠️ Known Limitations
 Touching/Overlapping Digits: Digits written without sufficient spacing merge into a single connected component and cannot be split reliably.
 Disconnected Strokes: Digits drawn in multiple disconnected parts (e.g., a detached top bar on a "5") may be segmented as separate blobs or filtered out as noise.
 Scale Variance: Excessively small digits or extreme size differences across strokes can be discarded by the minimum area and height filters.
-Tech Stack
+🛠️ Tech Stack
 Framework: Streamlit
 Deep Learning: PyTorch (CPU-only)
 Computer Vision & Image Processing: OpenCV (opencv-python-headless), SciPy, NumPy
 Interactive Component: streamlit-drawable-canvas
 Text Conversion: num2words
 Hosting: Streamlit Community Cloud
-Credits
+🙏 Credits
 MNIST Dataset: Yann LeCun, Corinna Cortes, and Christopher J.C. Burges.
 CNN Model: Model training and architecture adapted from the MIT edX course (6.86x / Machine Learning with Python).
 
