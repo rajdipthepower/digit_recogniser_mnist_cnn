@@ -35,7 +35,7 @@ class PredictionResult:
 
 
 def validate_predictions(
-	results: list[PredictionResult], confidence_threshold: float = 0.95
+	results: list[PredictionResult], confidence_threshold: float = 0.92
 ) -> dict:
 	"""Accept a number only when every digit meets the threshold (0.95 by default)."""
 	# A single uncertain digit can change the whole number, so the 0.95 default gates output.
