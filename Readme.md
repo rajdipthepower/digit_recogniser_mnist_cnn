@@ -55,7 +55,7 @@ Conv2d(1, 32, 3)
 
 ## 📊 Evaluation & Failure Analysis
 
-| Confusion Matrix | Misclassified Digits | Failure Cases |
+| Confusion Matrix(Training Run) | Misclassified Digits(Training Run) | Failure Cases(Live App) |
 |:---:|:---:|:---:|
 | ![Confusion Matrix](docs/confusion_matrix.png) | ![Misclassified Digits](docs/misclassified.png) | ![Failure Cases](docs/failure_cases.png) |
 
@@ -64,7 +64,7 @@ Conv2d(1, 32, 3)
 ## 📁 Repository Structure
 
 ```text
-├── app.py
+├── streamlit_app.py
 ├── src/
 │   ├── model.py
 │   ├── segmentation.py
@@ -78,6 +78,9 @@ Conv2d(1, 32, 3)
 │   ├── misclassified.png
 │   └── failure_cases.png
 └── requirements.txt
+└── Nature.png
+└── .streamlit/
+      └── config.toml
 ```
 
 ---
@@ -118,7 +121,7 @@ pip install -r requirements.txt
 ### 4. Launch the Application
 
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 The application will be available at:
