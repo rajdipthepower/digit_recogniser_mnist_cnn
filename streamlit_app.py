@@ -13,6 +13,8 @@ from src.preprocessing import prepare_mnist_crop
 from src.segmentation import extract_digit_blobs
 from src.utils import PredictionResult, digits_to_words, validate_predictions
 
+CONFIDENCE_THRESHOLD = 0.93
+
 
 def set_background(image_path: str) -> None:
 	"""Encode a local image as a CSS data URL for the browser background."""
@@ -140,7 +142,7 @@ if predict_clicked:
 					confidence_tensor, digit_tensor = probabilities.max(dim=1)
 
 				confidence = float(confidence_tensor.item())
-				digit = str(int(digit_tensor.item())) if confidence >= 0.93 else "?"
+				digit = str(int(digit_tensor.item()))
 				predictions.append(
 					PredictionResult(
 						digit=digit,
@@ -154,7 +156,7 @@ if predict_clicked:
 				"detected_count": len(blobs),
 				"predictions": predictions,
 				"validation": validate_predictions(
-					predictions, confidence_threshold=0.93
+					predictions, confidence_threshold=CONFIDENCE_THRESHOLD
 				),
 				"canvas_data": canvas_data.copy(),
 			}
@@ -173,8 +175,12 @@ if prediction_output is not None:
 			predictions = prediction_output["predictions"]
 			for column, prediction in zip(st.columns(len(predictions)), predictions):
 				with column:
+					is_confident = prediction.confidence >= CONFIDENCE_THRESHOLD
+					display_label = (
+						prediction.digit if is_confident else f"{prediction.digit} (?)"
+					)
 					st.image(prediction.image_tensor[0, 0], width=80)
-					st.markdown(f"**Prediction: {prediction.digit}**")
+					st.markdown(f"**Prediction: {display_label}**")
 					st.caption(f"Confidence: {prediction.confidence:.1%}")
 
 			validation = prediction_output["validation"]
