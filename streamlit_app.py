@@ -140,7 +140,7 @@ if predict_clicked:
 					confidence_tensor, digit_tensor = probabilities.max(dim=1)
 
 				confidence = float(confidence_tensor.item())
-				digit = str(int(digit_tensor.item())) if confidence >= 0.95 else "?"
+				digit = str(int(digit_tensor.item())) if confidence >= 0.93 else "?"
 				predictions.append(
 					PredictionResult(
 						digit=digit,
@@ -154,7 +154,7 @@ if predict_clicked:
 				"detected_count": len(blobs),
 				"predictions": predictions,
 				"validation": validate_predictions(
-					predictions, confidence_threshold=0.95
+					predictions, confidence_threshold=0.93
 				),
 				"canvas_data": canvas_data.copy(),
 			}
