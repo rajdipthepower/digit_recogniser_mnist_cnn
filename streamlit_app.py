@@ -103,7 +103,7 @@ canvas_data = canvas_result.image_data
 prediction_output = st.session_state.prediction_output
 if (
 	prediction_output is not None
-	and prediction_output["canvas_data"] is not None
+		and prediction_output.get("canvas_data") is not None
 	and canvas_data is not None
 	and not np.array_equal(prediction_output["canvas_data"], canvas_data)
 ):
@@ -112,7 +112,10 @@ if (
 
 if predict_clicked:
 	if canvas_data is None:
-		st.session_state.prediction_output = {"status": "empty"}
+		st.session_state.prediction_output = {
+			"status": "empty",
+			"canvas_data": None,
+		}
 	else:
 		blobs = extract_digit_blobs(canvas_data)
 		if not blobs:
